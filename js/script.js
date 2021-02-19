@@ -6,7 +6,7 @@ function loadJSON() {
         if (this.readyState == 4 && this.status == 200) {
             let json = JSON.parse(this.response);
             // document.getElementById("test").innerHTML = json;
-            // document.getElementById("date").innerHTML = json['date'];
+            document.getElementById("date").innerHTML = json['date'];
             console.log(json.rates);
             let table = document.getElementById("table-currency");
 
@@ -14,12 +14,14 @@ function loadJSON() {
                 console.log(`${property}: ${json.rates[property]}`);
                 table.innerHTML += `
                 <tr>
-                    <th scope="row">${property}</th>
+                    <td>${property}</td>
                     <td>${json.rates[property]}</td>
                 </tr>`;
             }
             $('.table-body').paginathing({
                 perPage: 10,
+                ulClass: 'pagination',
+                liClass: 'page-item',
                 containerClass: 'panel-footer'
             })
         }
