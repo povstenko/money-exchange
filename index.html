@@ -37,11 +37,8 @@
                                 From
                             </div>
                             <div class="col">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                <select class="form-select" id="convert_from" aria-label="Default select example">
+                                    <option value="EUR">EUR</option>
                                 </select>
                             </div>
                         </div>
@@ -50,11 +47,8 @@
                                 To
                             </div>
                             <div class="col">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                <select class="form-select" id="convert_to" aria-label="Default select example">
+                                    <option value="EUR">EUR</option>
                                 </select>
                             </div>
                         </div>
@@ -63,16 +57,16 @@
                                 Date
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" aria-label="DD.MM.YYYY" value="19.02.2021">
+                                <input type="text" class="form-control"  id="convert_date" aria-label="DD.MM.YYYY" value="2021-02-19">
                             </div>
                             <div class="col-auto">
-                                <button type="button" class="btn btn-success">Convert</button>
+                                <button type="button" class="btn btn-success" onclick="convert()">Convert</button>
                             </div>
                         </div>
 
                     </div>
-                    <div class="card-footer">
-                        <h4 id="converet-result">0.123</h4>
+                    <div class="card-footer bg-transparent">
+                        <h4 id="convert_result">0.0</h4>
                     </div>
                 </div>
                 <div class="card mt-3">

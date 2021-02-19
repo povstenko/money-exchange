@@ -1,22 +1,32 @@
 function loadJSON() {
-    
+
     let xhttp = new XMLHttpRequest();
     xhttp.open("GET", "https://api.exchangeratesapi.io/latest", true);
+    
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             let json = JSON.parse(this.response);
-            // document.getElementById("test").innerHTML = json;
-            document.getElementById("date").innerHTML = json['date'];
-            console.log(json.rates);
-            let table = document.getElementById("table-currency");
+            console.log(json);
+
+            let latest_table = document.getElementById("table-currency");
+            let convert_from = document.getElementById("convert_from");
+            let convert_to = document.getElementById("convert_to");
+            let convert_date = document.getElementById("convert_date");
+            let convert_result = document.getElementById("convert_result");
+
 
             for (const property in json.rates) {
-                console.log(`${property}: ${json.rates[property]}`);
-                table.innerHTML += `
-                <tr>
-                    <td>${property}</td>
-                    <td>${json.rates[property]}</td>
-                </tr>`;
+                convert_from.innerHTML += `<option value="${property}">${property}</option>`;
+                convert_to.innerHTML += `<option value="${property}">${property}</option>`;
+            }
+            convert_date.innerHTML = json['date'];
+
+            document.getElementById("date").innerHTML = json['date'];
+            for (const property in json.rates) {
+                latest_table.innerHTML += ` <tr>
+                                                <td>${property}</td>
+                                                <td>${json.rates[property]}</td>
+                                            </tr>`;
             }
             $('.table-body').paginathing({
                 perPage: 10,
@@ -25,8 +35,28 @@ function loadJSON() {
                 containerClass: 'panel-footer'
             })
         }
+        
     };
     xhttp.send();
 }
 window.onload = loadJSON;
-// <li class="list-group-item">${property}: ${json.rates[property]}</li
+
+function convert() {
+    let convert_from = document.getElementById("convert_from");
+    let convert_to = document.getElementById("convert_to");
+    let convert_date = document.getElementById("convert_date");
+    let convert_result = document.getElementById("convert_result");
+
+    let xhttp = new XMLHttpRequest();
+    xhttp.open("GET", `https://api.exchangeratesapi.io/${convert_date.value}?base=${convert_from.value}`, true);
+    
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            let json = JSON.parse(this.response);
+            console.log(json['rates']);
+            convert_result.innerText = `${json['rates'][convert_to.value]}`;
+        }
+        
+    };
+    xhttp.send();
+}
