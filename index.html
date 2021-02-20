@@ -57,7 +57,8 @@
                                 Date
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control"  id="convert_date" aria-label="DD.MM.YYYY" value="2021-02-19">
+                                <input type="text" class="form-control" id="convert_date" aria-label="DD.MM.YYYY"
+                                    value="2021-02-19">
                             </div>
                             <div class="col-auto">
                                 <button type="button" class="btn btn-success" onclick="convert()">Convert</button>
@@ -88,11 +89,44 @@
                         Month Rates
                     </div>
                     <div class="card-body">
-                        This is some text within a card body.
+                        <div class="row">
+                            <div class="col-2">
+                                Base
+                            </div>
+                            <div class="col-4">
+                                <select class="form-select" id="rates_base" aria-label="Default select example">
+                                    <option value="EUR">EUR</option>
+                                </select>
+                            </div>
+                            <div class="col-2">
+                                Currency
+                            </div>
+                            <div class="col-4">
+                                <select class="form-select" id="rates_currency" aria-label="Default select example">
+                                    <option value="EUR">EUR</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-2">
+                                Month
+                            </div>
+                            <div class="col-4">
+                                <input type="text" class="form-control" id="rates_month" aria-label="DD.MM.YYYY"
+                                    value="2021-02-19">
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-success float-end" onclick="rates()">Get Month Rates</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"

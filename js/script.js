@@ -56,7 +56,6 @@ function convert() {
             console.log(json['rates']);
             convert_result.innerText = `${json['rates'][convert_to.value]}`;
         }
-        
     };
     xhttp.send();
 }
