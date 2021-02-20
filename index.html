@@ -56,7 +56,7 @@
                                 Date
                             </div>
                             <div class="col">
-                                <input type="text" class="form-control" id="convert_date" aria-label="DD.MM.YYYY"
+                                <input type="text" class="form-control" id="convert_date" aria-label="YYYY-MM-DD"
                                     value="2021-02-19">
                             </div>
                             <div class="col-auto">
@@ -101,7 +101,7 @@
                             </div>
                             <div class="col-4">
                                 <select class="form-select" id="rates_currency" aria-label="Default select example">
-                                    <option value="EUR">EUR</option>
+                                    <!--  -->
                                 </select>
                             </div>
                         </div>
@@ -110,11 +110,11 @@
                                 Month
                             </div>
                             <div class="col-4">
-                                <input type="text" class="form-control" id="rates_month" aria-label="DD.MM.YYYY"
-                                    value="2021-02-19">
+                                <input type="text" class="form-control" id="rates_month" aria-label="YYYY-MM"
+                                    value="2021-01">
                             </div>
                             <div class="col">
-                                <button type="button" class="btn btn-success float-end" onclick="rates()">Get Month
+                                <button type="button" class="btn btn-success float-end" onclick="drawChart()">Get Month
                                     Rates</button>
                             </div>
                         </div>
@@ -132,34 +132,8 @@
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
     <script type="text/javascript" src="js/paginathing.js"></script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-        google.charts.load('current', { 'packages': ['bar'] });
-        google.charts.setOnLoadCallback(drawChart);
-
-        function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-                ['Year', 'Sales', 'Expenses', 'Profit'],
-                ['2014', 1000, 400, 200],
-                ['2015', 1170, 460, 250],
-                ['2016', 660, 1120, 300],
-                ['2017', 1030, 540, 350]
-            ]);
-
-            var options = {
-                chart: {
-                    title: 'Company Performance',
-                    subtitle: 'Sales, Expenses, and Profit: 2014-2017',
-                }
-            };
-
-            var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
-
-            chart.draw(data, google.charts.Bar.convertOptions(options));
-        }
-    </script>
 
     <script src="js/script.js"></script>
 </body>
