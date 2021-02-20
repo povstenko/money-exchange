@@ -8,7 +8,6 @@
     <title>Money Exchange</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -64,7 +63,6 @@
                                 <button type="button" class="btn btn-success" onclick="convert()">Convert</button>
                             </div>
                         </div>
-
                     </div>
                     <div class="card-footer bg-transparent">
                         <h4 id="convert_result">0.0</h4>
@@ -116,12 +114,13 @@
                                     value="2021-02-19">
                             </div>
                             <div class="col">
-                                <button type="button" class="btn btn-success float-end" onclick="rates()">Get Month Rates</button>
+                                <button type="button" class="btn btn-success float-end" onclick="rates()">Get Month
+                                    Rates</button>
                             </div>
                         </div>
                     </div>
                     <div class="card-footer bg-transparent">
-                        
+                        <div id="columnchart_material" style="width: 800px; height: 500px;"></div>
                     </div>
                 </div>
             </div>
@@ -135,6 +134,33 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     <script type="text/javascript" src="js/paginathing.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['bar'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Year', 'Sales', 'Expenses', 'Profit'],
+                ['2014', 1000, 400, 200],
+                ['2015', 1170, 460, 250],
+                ['2016', 660, 1120, 300],
+                ['2017', 1030, 540, 350]
+            ]);
+
+            var options = {
+                chart: {
+                    title: 'Company Performance',
+                    subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+                }
+            };
+
+            var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+            chart.draw(data, google.charts.Bar.convertOptions(options));
+        }
+    </script>
+
     <script src="js/script.js"></script>
 </body>
 
