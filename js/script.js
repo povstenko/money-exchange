@@ -33,7 +33,7 @@ function loadJSON() {
             }
             $('.table-body').paginathing({
                 perPage: 10,
-                ulClass: 'pagination',
+                ulClass: 'pagination mb-0',
                 liClass: 'page-item',
                 containerClass: 'panel-footer'
             })
@@ -80,9 +80,9 @@ function drawChart() {
             let json = JSON.parse(this.response);
             console.log(json);
 
-            var data = [['Date', 'Rate']];
+            var data = [['Date', 'Rate', { role: 'style' }]];
             for (const property in json.rates) {
-                data.push([property, json.rates[property][rates_currency.value]]);
+                data.push([property, json.rates[property][rates_currency.value], 'color: gray']);
             }
             console.log(data);
             
@@ -92,7 +92,9 @@ function drawChart() {
                 chart: {
                     title: 'Month Rates',
                     subtitle: `EUR month rates from ${start_date} to ${end_date}`,
-                }
+                    color: 'green'
+                },
+                colors: ['#198754'],
             };
         
             var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
@@ -101,6 +103,4 @@ function drawChart() {
         }
     };
     xhttp.send();
-
-   
 }
